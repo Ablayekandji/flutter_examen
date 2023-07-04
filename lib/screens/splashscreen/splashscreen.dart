@@ -1,4 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:projet_master/screens/loginscreen/loginscreen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -8,6 +12,18 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    if (mounted) {
+      Timer(const Duration(seconds: 3), () {
+        
+        Get.offAll(SignInScreen());
+      });
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
