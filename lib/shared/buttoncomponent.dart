@@ -18,12 +18,8 @@ class BasicButtonComponent extends StatelessWidget {
           alignment: Alignment.center,
           width: double.infinity,
           decoration: BoxDecoration(
-            color: backgroundColor!=null?backgroundColor:null,
-            border: borderdColor!=null?Border.all(width: 1, color: borderdColor!):null,
-            image: backgroundColor!=null?null:DecorationImage(
-              image: AssetImage('assets/images/test.png'),
-              fit: BoxFit.cover,
-            ),
+            color: Colors.white,
+            border: Border.all(width: 1, color: Colors.blueGrey),
             borderRadius: BorderRadius.circular(15),
           ),
           child: Center(
@@ -31,7 +27,7 @@ class BasicButtonComponent extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: 15),
               child: Text(
                 text,
-                style: TextStyle(color: textColor ?? Colors.black, fontSize: 16),
+                style: TextStyle(color: Colors.blueGrey, fontSize: 16),
               ),
             ),
           )),

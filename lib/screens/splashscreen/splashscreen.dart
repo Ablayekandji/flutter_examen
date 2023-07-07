@@ -2,7 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:projet_master/screens/homeScreen/homescreen.dart';
 import 'package:projet_master/screens/loginscreen/loginscreen.dart';
+
+import '../../services/storage_service.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -19,34 +22,28 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     if (mounted) {
       Timer(const Duration(seconds: 3), () {
-        
-        Get.offAll(SignInScreen());
+        if(StorageService.getToken() != "") {
+          Get.offAll(HomeScreen(email: StorageService.getEmail()));
+        }else{
+          Get.offAll(SignInScreen());
+        }
+        // Get.offAll(HomeScreen());
       });
     }
   }
+  // #404E5C
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            child: Stack(
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Align(
-                        alignment: AlignmentDirectional.center,
-                        child: Image.asset(
-                          '/images/test.png',
-                          width: 115,
-                          height: 125,
-                        )),
-                  ],
-                ),
-              ],
-            )
-            )
-          );
+        backgroundColor: Colors.white,
+        body: Center(
+          child: Image.asset(
+            'assets/images/app-logo.png',
+            width: 150,
+            height: 150,
+            //fit: BoxFit.cover,
+          ),
+        )
+    );
   }
 }

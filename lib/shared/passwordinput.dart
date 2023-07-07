@@ -12,12 +12,12 @@ class PasswordInputField extends StatefulWidget {
 
   const PasswordInputField(
       {Key? key,
-      required this.name,
-      this.isEnabled,
-      this.hintText,
-      this.initialValue,
-      this.isPrefixIcon,
-      this.prefixIconColor})
+        required this.name,
+        this.isEnabled,
+        this.hintText,
+        this.initialValue,
+        this.isPrefixIcon,
+        this.prefixIconColor})
       : super(key: key);
 
   @override
@@ -26,7 +26,7 @@ class PasswordInputField extends StatefulWidget {
 
 class _PasswordInputFieldState extends State<PasswordInputField> {
   final passwordValidator =
-      FormBuilderValidators.minLength(8, errorText: "Taille minimale est 8");
+  FormBuilderValidators.minLength(8, errorText: "Taille minimale est 8");
 
   @override
   Widget build(BuildContext context) {
@@ -42,23 +42,23 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
           name: widget.name,
           decoration: InputDecoration(
             filled: true,
-            fillColor: Color.fromARGB(255, 232, 225, 225),
+            fillColor: Colors.white, //Color.fromARGB(255, 232, 225, 225),
             prefixIcon: widget.isPrefixIcon != null
                 ? Icon(
-                    Icons.lock_outline,
-                    color: widget.prefixIconColor ?? Colors.green,
-                  )
+              Icons.lock_outline,
+              color: widget.prefixIconColor ?? Colors.green,
+            )
                 : null,
             hintText: widget.hintText ?? 'Mot de passe',
             border: OutlineInputBorder(
               borderSide: const BorderSide(
-                color: Colors.transparent,
+                color: Colors.blueGrey,
               ),
               borderRadius: BorderRadius.circular(20.0),
             ),
             enabledBorder: OutlineInputBorder(
               borderSide: const BorderSide(
-                color: Colors.transparent,
+                color: Colors.blueGrey,
               ),
               borderRadius: BorderRadius.circular(20.0),
             ),
@@ -91,7 +91,7 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
       ],
     );
   }
-   FormFieldValidator<Object> requiredValidator = FormBuilderValidators.required(
-  errorText: 'Champ requis.',
-);
+  FormFieldValidator<Object> requiredValidator = FormBuilderValidators.required(
+    errorText: 'Champ requis.',
+  );
 }

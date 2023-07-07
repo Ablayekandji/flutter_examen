@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:projet_master/screens/homeScreen/homescreen.dart';
 import 'package:projet_master/screens/splashscreen/splashscreen.dart';
@@ -7,6 +8,8 @@ import 'package:projet_master/services/authentification.dart';
 import 'package:projet_master/shared/basicinput.dart';
 import 'package:projet_master/shared/buttoncomponent.dart';
 import 'package:projet_master/shared/passwordinput.dart';
+
+import '../../services/storage_service.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -34,7 +37,7 @@ class _SignInScreenState extends State<SignInScreen> {
             Center(
               child: Text(
                 'Connexion',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w900),
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.w900, color: Colors.blueGrey),
               ),
             ),
             SizedBox(
@@ -50,7 +53,7 @@ class _SignInScreenState extends State<SignInScreen> {
             SizedBox(
               height: 46,
             ),
-            
+
             SizedBox(
               height: 46,
             ),
@@ -121,13 +124,39 @@ class _SignInScreenState extends State<SignInScreen> {
                 bool resp = await auth.login(telephoneController.text,passwordController.text);
                 print("niania 2");
                 if(resp){
-                  Get.to(HomeScreen());
+                  Get.offAll(HomeScreen(email: StorageService.getEmail(),));
+                  Fluttertoast.showToast(
+                      msg: "connexion avec succes",
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.CENTER,
+                      timeInSecForIosWeb: 1,
+                      backgroundColor: Colors.greenAccent,
+                      textColor: Colors.white,
+                      fontSize: 16.0
+                  );
                 }else{
                   print("mot de passe incorrect");
+                  Fluttertoast.showToast(
+                      msg: "identifiant invalide",
+                      toastLength: Toast.LENGTH_SHORT,
+                      gravity: ToastGravity.CENTER,
+                      timeInSecForIosWeb: 1,
+                      backgroundColor: Colors.red,
+                      textColor: Colors.white,
+                      fontSize: 16.0
+                  );
                 }
-                 
+
               } else {
-                print("c'est pas bon");
+                Fluttertoast.showToast(
+                    msg: "Veillez remplir les champs",
+                    toastLength: Toast.LENGTH_SHORT,
+                    gravity: ToastGravity.CENTER,
+                    timeInSecForIosWeb: 1,
+                    backgroundColor: Colors.red,
+                    textColor: Colors.white,
+                    fontSize: 16.0
+                );
               }
             },
           ),
