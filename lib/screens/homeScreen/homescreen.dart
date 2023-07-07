@@ -157,7 +157,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: SfCartesianChart(
                     primaryXAxis: CategoryAxis(),
                     // Chart title
-                    title: ChartTitle(text: 'Données Statistics'),
+                    title: ChartTitle(text: 'Pointage par mois'),
                     // Enable legend
                     //legend: Legend(isVisible: true),
                     // Enable tooltip
